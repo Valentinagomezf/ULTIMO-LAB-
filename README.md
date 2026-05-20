@@ -12,4 +12,6 @@ Finalmente, se construyeron diagramas de Poincaré para cada segmento de la señ
 - Construir y analizar diagramas de Poincaré para evaluar la actividad simpática y parasimpática.
 - Comparar los cambios fisiológicos observados entre las diferentes condiciones experimentales.
 ## PARTE C 
+En esta etapa se realizó el análisis no lineal de la variabilidad de la frecuencia cardíaca mediante el diagrama de Poincaré, utilizando los intervalos R-R obtenidos de la señal ECG. Esto permitió observar la dispersión y el comportamiento dinámico de la frecuencia cardíaca en condiciones de reposo y lectura en voz alta.
+Además, se compararon los diagramas obtenidos y se calcularon los índices CSI y CVI para evaluar la actividad simpática y parasimpática del sistema nervioso autónomo, analizando los cambios fisiológicos presentes en cada condición experimental.
 ### DIAGRAMA 
