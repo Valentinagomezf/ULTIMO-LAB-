@@ -14,6 +14,8 @@ Finalmente, se construyeron diagramas de Poincaré para cada segmento de la señ
 - Comparar los cambios fisiológicos observados entre las diferentes condiciones experimentales.
 
 ## PARTE A
+### DIAGRAMA 
+
 ### 1. Fundamento teórico 
 #### Actividad Simpática y Parasimpática del Sistema Nervioso Autónomo
 
@@ -70,7 +72,7 @@ La HRV no es un proceso que el cuerpo controle conscientemente, sino el reflejo 
 - Rama Simpática (Acelerador): Su función es preparar al cuerpo para la acción, el esfuerzo y la supervivencia (reacción de lucha o huida). Ante el estrés físico, el esfuerzo mental o actividades como la verbalización (hablar en público), libera noradrenalina para aumentar la frecuencia cardíaca, redistribuir la sangre hacia los músculos y optimizar la atención. En este estado, la HRV disminuye temporalmente porque el sistema prioriza la estabilidad rítmica para mantener un bombeo de sangre constante
 - Rama Simpática (Acelerador): Su función es preparar al cuerpo para la acción, el esfuerzo y la supervivencia (reacción de lucha o huida). Ante el estrés físico, el esfuerzo mental o actividades como la verbalización (hablar en público), libera noradrenalina para aumentar la frecuencia cardíaca, redistribuir la sangre hacia los músculos y optimizar la atención. En este estado, la HRV disminuye temporalmente porque el sistema prioriza la estabilidad rítmica para mantener un bombeo de sangre constante
 
-  #### b. Adquisición de la señal ECG
+  ### b. Adquisición de la señal ECG
 
 Se seleccionó a un sujeto de prueba (voluntario) para la instrumentación y registro de la señal electrocardiográfica (ECG). El protocolo constó de dos etapas consecutivas de 2 minutos cada una: una fase inicial de reposo basal en total silencio y una fase posterior de verbalización activa. Durante la captura en tiempo real, se implementó un filtro de Kalman para la atenuación de ruido y artefactos de movimiento. Los datos filtrados se exportaron y almacenaron en formato .csv, permitiendo su posterior importación en un entorno de Google Colab para la programación, procesamiento y visualización de la señal.
 
