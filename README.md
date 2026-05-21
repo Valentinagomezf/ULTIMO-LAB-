@@ -77,7 +77,118 @@ Se seleccionó a un sujeto de prueba (voluntario) para la instrumentación y reg
 ##### Código Adquisición
 
 ```python
-poner codigo 
+from pathlib import Path
+from datetime import datetime
+import csv
+import numpy as np
+import matplotlib.pyplot as plt
+import nidaqmx
+from nidaqmx.constants import AcquisitionType
+
+# ==========================================
+# PARÁMETROS
+# ==========================================
+fs = 2500
+duracion = 240  # 4 minutos
+canal = 'Dev8/ai0'
+
+total_muestras = int(fs * duracion)
+
+# ==========================================
+# ADQUISICIÓN
+# ==========================================
+with nidaqmx.Task() as task:
+
+    task.ai_channels.add_ai_voltage_chan(canal)
+
+    task.timing.cfg_samp_clk_timing(
+        rate=fs,
+        sample_mode=AcquisitionType.FINITE,
+        samps_per_chan=total_muestras
+    )
+
+    print("Adquiriendo señal ECG (4 minutos)...")
+
+    task.start()
+
+    # ❌ NO wait_until_done (CAUSA DEL ERROR)
+
+    senal = task.read(
+        number_of_samples_per_channel=total_muestras,
+        timeout=300  # 🔥 importante: mayor que 240 s
+    )
+
+print("Adquisición terminada")
+
+# ==========================================
+# CONVERTIR
+# ==========================================
+senal = np.array(senal)
+
+# ==========================================
+# FILTRO KALMAN
+# ==========================================
+senal_filtrada = np.zeros(len(senal))
+P = np.zeros(len(senal))
+
+Q = 0.0001
+R = 0.01
+
+senal_filtrada[0] = senal[0]
+P[0] = 1
+
+for k in range(1, len(senal)):
+
+    x_pred = senal_filtrada[k - 1]
+    P_pred = P[k - 1] + Q
+
+    K = P_pred / (P_pred + R)
+
+    senal_filtrada[k] = x_pred + K * (senal[k] - x_pred)
+
+    P[k] = (1 - K) * P_pred
+
+# ==========================================
+# TIEMPO
+# ==========================================
+t = np.arange(len(senal)) / fs
+
+# ==========================================
+# GUARDAR CSV
+# ==========================================
+desktop = Path.home() / "Desktop"
+nombre = input("Nombre del archivo: ")
+
+if nombre.strip() == "":
+    nombre = "ECG_4MIN"
+
+fecha = datetime.now().strftime("%Y%m%d_%H%M%S")
+
+archivo = desktop / f"{nombre}_{fecha}.csv"
+
+with open(archivo, 'w', newline='') as f:
+    writer = csv.writer(f, delimiter=';')
+
+    writer.writerow(["Tiempo", "ECG Original", "ECG Filtrado"])
+
+    for i in range(len(senal)):
+        writer.writerow([t[i], senal[i], senal_filtrada[i]])
+
+print("Guardado en:", archivo)
+
+# ==========================================
+# GRÁFICA
+# ==========================================
+plt.figure(figsize=(15,6))
+plt.plot(t, senal, alpha=0.5, label="ECG Original")
+plt.plot(t, senal_filtrada, linewidth=2, label="ECG Filtrado Kalman")
+
+plt.title("ECG 4 minutos - Filtro Kalman")
+plt.xlabel("Tiempo (s)")
+plt.ylabel("Voltaje (V)")
+plt.grid()
+plt.legend()
+plt.show()
 ```
 
 
