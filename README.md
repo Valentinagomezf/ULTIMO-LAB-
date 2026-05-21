@@ -25,6 +25,8 @@ Actividad Simpática: Generalmente asociada con respuestas de "lucha o huida", a
 
 Actividad Parasimpática: Domina en estados de reposo, siendo su tono máximo cuando el sujeto se encuentra en posición supina (acostado boca arriba)
 
+![](https://github.com/Valentinagomezf/ULTIMO-LAB-/blob/main/imagen_2026-05-21_085635396.png?raw=true)
+
 #### Efecto de la actividad simpática y parasimpática en la frecuencia cardíaca
 
 Ambos sistemas ejercen un control antagónico sobre el nodo sinoauricular para regular el ritmo cardíaco
