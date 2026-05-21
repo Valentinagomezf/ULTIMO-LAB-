@@ -205,6 +205,10 @@ Después del filtrado, la señal se dividió en dos segmentos de 2 minutos y se 
 
 ### DIAGRAMA 
 
+### Pre-procesamiento de la señal
+### Análisis de la HRV en el dominio del tiempo 
+
+
 
   
 ## PARTE C 
