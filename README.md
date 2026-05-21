@@ -210,6 +210,29 @@ Después del filtrado, la señal se dividió en dos segmentos de 2 minutos y se 
 <img width="400" height="800" alt="image" src="Im4.png" />
 
 ### Pre-procesamiento de la señal
+Selección de parámetros del filtro IIR
+
+Se diseñó un filtro pasa-altos IIR para eliminar el ruido de baja frecuencia presente en la señal ECG, especialmente la deriva de línea base causada por respiración y movimiento de electrodos.
+
+Frecuencia de rechazo:
+f1=0.2 Hz
+Se escogió porque las componentes muy bajas de frecuencia corresponden principalmente al ruido y movimiento lento de la señal.
+
+Frecuencia de transición:
+f2=0.5 Hz
+Se seleccionó debido a que por encima de 0.5 Hz se encuentra la información útil del ECG, especialmente los complejos QRS y los picos R.
+
+Atenuación en banda de rechazo
+k1=−10 dB
+Se utilizó para reducir significativamente el ruido de baja frecuencia.
+
+Atenuación en banda de paso
+k2=−3 dB
+Se escogió porque corresponde al punto típico de corte de filtros Butterworth, permitiendo una transición suave sin deformar la señal ECG.
+
+Frecuencia de muestreo
+fs=2500 Hz
+Corresponde a la frecuencia con la que fue adquirida la señal ECG y permite representar correctamente la actividad cardíaca y detectar los picos R con buena resolución temporal.
 ### Análisis de la HRV en el dominio del tiempo 
 
 
