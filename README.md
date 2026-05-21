@@ -237,24 +237,16 @@ def poincare_plot(rr, titulo):
 
     plt.xlabel('RR(n) [s]')
     plt.ylabel('RR(n+1) [s]')
-
     plt.title(titulo)
-
     plt.grid(True)
-
     plt.axis('equal')
-
     plt.show()
-poincare_plot(
-    rr1,
-    "Poincaré - Reposo (0-2 min)"
-)
-poincare_plot(
-    rr2,
-    "Poincaré - Lectura (2-4 min)"
-)
-``` 
-
+poincare_plot( rr1, "Poincaré - Reposo (0-2 min)")
+poincare_plot( rr2, "Poincaré - Lectura (2-4 min)")
+```
+## Graficas 
+Se realizaron dos tipos de diagramas de Poincaré para analizar la variabilidad de la frecuencia cardíaca. En los primeros diagramas, correspondientes únicamente a la nube de puntos, fue posible observar la dinámica de los intervalos R-R y su comportamiento entre latidos consecutivos. A partir de la distribución de los puntos se pudo identificar si la señal presentaba un comportamiento más estable, disperso o irregular. Además, la forma y dispersión de la nube permitieron visualizar el patrón general de la variabilidad cardíaca en cada segmento de la señal ECG, facilitando la comparación entre las condiciones de reposo y lectura en voz alta.
+                                                       Poincare sin elipse
 <img width="875" height="818" alt="image" src="https://github.com/user-attachments/assets/6f6dd882-c016-4da8-a256-d1a9ae9b6b19" />
 <img width="848" height="830" alt="image" src="https://github.com/user-attachments/assets/45cce40a-09e8-431f-85b7-f86fb547733b" />
 
