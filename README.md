@@ -205,6 +205,9 @@ Después del filtrado, la señal se dividió en dos segmentos de 2 minutos y se 
 
 ### DIAGRAMA 
 <img width="400" height="800" alt="image" src="Im1.png" />
+<img width="400" height="800" alt="image" src="Im2.png" />
+<img width="400" height="800" alt="image" src="Im3.png" />
+<img width="400" height="800" alt="image" src="Im4.png" />
 
 ### Pre-procesamiento de la señal
 ### Análisis de la HRV en el dominio del tiempo 
