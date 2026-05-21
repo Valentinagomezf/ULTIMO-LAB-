@@ -18,7 +18,9 @@ Finalmente, se construyeron diagramas de Poincaré para cada segmento de la señ
 #### Actividad Simpática y Parasimpática del Sistema Nervioso Autónomo
 
 El sistema nervioso autónomo regula las funciones involuntarias del cuerpo, incluyendo la función cardíaca, a través de dos ramas principales: el sistema simpático y el sistema parasimpático
+
 Actividad Simpática: Generalmente asociada con respuestas de "lucha o huida", aumenta ante el estrés mental y cambios posturales (como pasar de estar acostado a estar de pie)
+
 Actividad Parasimpática: Domina en estados de reposo, siendo su tono máximo cuando el sujeto se encuentra en posición supina (acostado boca arriba)
 
 #### Efecto de la actividad simpática y parasimpática en la frecuencia cardíaca
