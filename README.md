@@ -16,6 +16,8 @@ Finalmente, se construyeron diagramas de Poincaré para cada segmento de la señ
 ## PARTE A
 #### 1. Fundamento teórico 
 
+###### Actividad Simpática y Parasimpática del Sistema Nervioso Autónomo
+
   
 ## PARTE C 
 En esta etapa se construyeron los diagramas de Poincaré a partir de los intervalos R-R obtenidos de la señal ECG, permitiendo analizar la dispersión y el comportamiento dinámico de la frecuencia cardíaca durante las condiciones de reposo y lectura en voz alta. Además, se implementó la elipse de dispersión para calcular los parámetros SD1 y SD2 asociados a la variabilidad cardíaca.
