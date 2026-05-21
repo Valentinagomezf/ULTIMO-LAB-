@@ -12,6 +12,11 @@ Finalmente, se construyeron diagramas de Poincaré para cada segmento de la señ
 - Analizar parámetros de HRV en el dominio del tiempo, como la media y la desviación estándar de los intervalos R-R.
 - Construir y analizar diagramas de Poincaré para evaluar la actividad simpática y parasimpática.
 - Comparar los cambios fisiológicos observados entre las diferentes condiciones experimentales.
+
+## PARTE A
+#### 1. Fundamento teórico 
+
+  
 ## PARTE C 
 En esta etapa se construyeron los diagramas de Poincaré a partir de los intervalos R-R obtenidos de la señal ECG, permitiendo analizar la dispersión y el comportamiento dinámico de la frecuencia cardíaca durante las condiciones de reposo y lectura en voz alta. Además, se implementó la elipse de dispersión para calcular los parámetros SD1 y SD2 asociados a la variabilidad cardíaca.
 
