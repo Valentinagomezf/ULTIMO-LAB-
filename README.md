@@ -196,7 +196,14 @@ plt.grid()
 plt.legend()
 plt.show()
 ```
+## PARTE B
+La señal electrocardiográfica (ECG) puede verse afectada por diferentes tipos de ruido durante su adquisición, como desplazamiento de línea base, interferencia eléctrica y ruido muscular. Por esta razón, es necesario realizar un pre-procesamiento digital que permita mejorar la calidad de la señal antes de analizarla.
 
+En esta práctica se trabajó con una señal ECG adquirida durante 240 segundos con una frecuencia de muestreo de 2500 Hz. Para eliminar las componentes no deseadas se diseñaron e implementaron filtros digitales IIR tipo Butterworth. Primero se utilizó un filtro pasa-altos para remover las componentes de baja frecuencia asociadas al desplazamiento de línea base, y posteriormente un filtro pasa-bajos para atenuar el ruido de alta frecuencia y preservar las componentes fisiológicas importantes del ECG.
+
+Después del filtrado, la señal se dividió en dos segmentos de 2 minutos y se realizó la detección de los picos R del complejo QRS. A partir de estos picos se calcularon los intervalos R-R y posteriormente se llevó a cabo el análisis de la variabilidad de la frecuencia cardíaca (HRV) en el dominio del tiempo, utilizando parámetros como la media de los intervalos R-R y su desviación estándar (SDNN), permitiendo comparar el comportamiento cardíaco entre ambas condiciones analizadas.
+
+### DIAGRAMA 
 
 
   
