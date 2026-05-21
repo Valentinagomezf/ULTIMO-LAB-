@@ -204,7 +204,7 @@ En esta práctica se trabajó con una señal ECG adquirida durante 240 segundos 
 Después del filtrado, la señal se dividió en dos segmentos de 2 minutos y se realizó la detección de los picos R del complejo QRS. A partir de estos picos se calcularon los intervalos R-R y posteriormente se llevó a cabo el análisis de la variabilidad de la frecuencia cardíaca (HRV) en el dominio del tiempo, utilizando parámetros como la media de los intervalos R-R y su desviación estándar (SDNN), permitiendo comparar el comportamiento cardíaco entre ambas condiciones analizadas.
 
 ### DIAGRAMA 
-<img width="800" height="600" alt="image" src="Im1.png" />
+<img width="800" height="400" alt="image" src="Im1.png" />
 
 ### Pre-procesamiento de la señal
 ### Análisis de la HRV en el dominio del tiempo 
