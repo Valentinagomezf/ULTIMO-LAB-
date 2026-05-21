@@ -14,9 +14,8 @@ Finalmente, se construyeron diagramas de Poincaré para cada segmento de la señ
 - Comparar los cambios fisiológicos observados entre las diferentes condiciones experimentales.
 
 ## PARTE A
-#### 1. Fundamento teórico 
-
-###### Actividad Simpática y Parasimpática del Sistema Nervioso Autónomo
+### 1. Fundamento teórico 
+##### Actividad Simpática y Parasimpática del Sistema Nervioso Autónomo
 
   
 ## PARTE C 
