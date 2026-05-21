@@ -205,7 +205,13 @@ En esta etapa se construyeron los diagramas de Poincaré a partir de los interva
 
 Finalmente, se calcularon los índices CSI y CVI con el fin de evaluar la actividad simpática y parasimpática del sistema nervioso autónomo, comparando los cambios fisiológicos presentes en cada segmento de la señal.
 ### DIAGRAMA 
-##
+## PROGRAMACIÓN 
+Sí, está bien explicado y técnicamente correcto, pero tiene algunos detalles de redacción y precisión que puedes mejorar para que suene más profesional en el informe. Te recomiendo dejarlo así:
+
+Se realiza el diagrama de Poincaré a partir de la definición de una función `poincare_plot`, la cual recibe como entrada la serie de intervalos R-R. Dentro de la función se crean dos arreglos: `rr_n`, que contiene todos los intervalos R-R excepto el último, y `rr_n1`, que contiene todos los intervalos excepto el primero. De esta manera, cada punto ((RR(n), RR(n+1))) representa un intervalo cardíaco y su intervalo consecutivo.
+
+Posteriormente, se realiza la visualización gráfica donde cada punto corresponde a un par de intervalos consecutivos. Además, se agrega una línea diagonal como referencia, indicando la condición ideal en la que todos los intervalos R-R serían iguales. Finalmente, la función es aplicada a ambos segmentos de la señal ECG para comparar el comportamiento de la variabilidad cardíaca en cada condición experimental.
+
 <img width="875" height="818" alt="image" src="https://github.com/user-attachments/assets/6f6dd882-c016-4da8-a256-d1a9ae9b6b19" />
 <img width="848" height="830" alt="image" src="https://github.com/user-attachments/assets/45cce40a-09e8-431f-85b7-f86fb547733b" />
 
