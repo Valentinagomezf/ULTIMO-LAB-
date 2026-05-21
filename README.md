@@ -212,6 +212,37 @@ Se realiza el diagrama de Poincaré a partir de la definición de una función `
 
 Posteriormente, se realiza la visualización gráfica donde cada punto corresponde a un par de intervalos consecutivos. Además, se agrega una línea diagonal como referencia, indicando la condición ideal en la que todos los intervalos R-R serían iguales. Finalmente, la función es aplicada a ambos segmentos de la señal ECG para comparar el comportamiento de la variabilidad cardíaca en cada condición experimental.
 
+```python 
+x1_rr1 = rr1[:-1]
+x2_rr1 = rr1[1:]
+
+plt.figure(figsize=(7,7))
+
+plt.scatter(
+    x1_rr1,
+    x2_rr1,
+    color='deeppink',
+    s=30,
+    alpha=0.7
+)
+
+plt.plot(
+    [min(x1_rr1), max(x1_rr1)],
+    [min(x1_rr1), max(x1_rr1)],
+    'k--'
+)
+
+plt.title('Diagrama de Poincaré - Reposo')
+
+plt.xlabel('RR(n) [s]')
+plt.ylabel('RR(n+1) [s]')
+
+plt.grid()
+plt.axis('equal')
+
+plt.show()
+``` 
+
 <img width="875" height="818" alt="image" src="https://github.com/user-attachments/assets/6f6dd882-c016-4da8-a256-d1a9ae9b6b19" />
 <img width="848" height="830" alt="image" src="https://github.com/user-attachments/assets/45cce40a-09e8-431f-85b7-f86fb547733b" />
 
