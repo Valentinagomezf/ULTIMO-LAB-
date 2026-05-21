@@ -16,6 +16,8 @@ Finalmente, se construyeron diagramas de Poincaré para cada segmento de la señ
 ## PARTE A
 ### DIAGRAMA 
 
+![](https://github.com/Valentinagomezf/ULTIMO-LAB-/blob/main/imagen_2026-05-21_091403363.png?raw=true)
+
 ### 1. Fundamento teórico 
 #### Actividad Simpática y Parasimpática del Sistema Nervioso Autónomo
 
