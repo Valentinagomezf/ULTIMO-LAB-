@@ -36,16 +36,32 @@ Análisis convencional: Históricamente se han usado métodos como la desviació
 
 El diagrama de Poincaré, también llamado Lorenz Plot, es una técnica de análisis no lineal que grafica cada intervalo R-R (Ik) contra el intervalo siguiente (Ik+1).
 
-![](https://github.com/Valentinagomezf/ULTIMO-LAB-/blob/main/poincare1.png?raw=true)
+![POINCARE](https://github.com/Valentinagomezf/ULTIMO-LAB-/blob/main/poincare1.png?raw=true)
+
 
 Interpretación Fisiológica del Gráfico
 Las dimensiones y la dispersión geométrica del gráfico permiten interpretar el estado del Sistema Nervioso Autónomo (SNA):
 - Puntos muy dispersos: Alta variabilidad global (HRV); indica una buena modulación autonómica y salud cardíaca.
-- 
--
--
+- SD1 alto (Ancho): Cambios rápidos entre latidos consecutivos. Está regulado por el sistema parasimpático (tono vagal).
+- SD2 alto (Largo): Cambios lentas a largo plazo. Refleja la variabilidad global con fuerte influencia del sistema simpático.
+- Elipse ancha: SD1 elevado. Indica un predominio parasimpático (estado de reposo y relajación).
+- Elipse delgada (forma de cigarrillo): SD2 predomina sobre SD1. Indica un predominio simpático (estado de estrés, verbalización o alerta).
 
+#### Variabilidad de la frecuencia cardíaca (HRV) y balance autonómico 
 
+La función de la HRV (Variabilidad de la Frecuencia Cardíaca) y del balance autonómico es servir como un mecanismo de adaptación continua que permite al organismo responder de manera eficiente a los constantes cambios del entorno interno y externo (estrés, digestión, ejercicio, descanso, etc.).
+
+##### Función de la HRV (Capacidad de Adaptación)
+La HRV no es un proceso que el cuerpo controle conscientemente, sino el reflejo de un corazón flexible.
+- Homeostasis y resiliencia: Un corazón sano no late al ritmo de un metrónomo perfecto; varía milisegundo a milisegundo. Una alta HRV indica que el corazón tiene una gran capacidad para adaptarse rápidamente a imprevistos (por ejemplo, pasar de estar sentado a correr, o recuperarse de un susto).
+- Indicador de salud global: Una HRV baja significa que el ritmo cardíaco se ha vuelto rígido y monótono, lo cual es una señal de que el cuerpo está atrapado en un estado de estrés crónico, fatiga o enfermedad, perdiendo su flexibilidad adaptativa.
+
+  ##### Función del Balance Autonómico (El Equilibrio Dinámico)
+
+  El balance autonómico es la regulación recíproca entre las dos ramas del Sistema Nervioso Autónomo (SNA). Su función es actuar como un sistema de "acelerador y freno" para optimizar los recursos energéticos del cuerpo:
+
+  - Rama Simpática (Acelerador): Su función es preparar al cuerpo para la acción, el esfuerzo y la supervivencia (reacción de lucha o huida). Ante el estrés físico, el esfuerzo mental o actividades como la verbalización (hablar en público), libera noradrenalina para aumentar la frecuencia cardíaca, redistribuir la sangre hacia los músculos y optimizar la atención. En este estado, la HRV disminuye temporalmente porque el sistema prioriza la estabilidad rítmica para mantener un bombeo de sangre constante
+  - Rama Simpática (Acelerador): Su función es preparar al cuerpo para la acción, el esfuerzo y la supervivencia (reacción de lucha o huida). Ante el estrés físico, el esfuerzo mental o actividades como la verbalización (hablar en público), libera noradrenalina para aumentar la frecuencia cardíaca, redistribuir la sangre hacia los músculos y optimizar la atención. En este estado, la HRV disminuye temporalmente porque el sistema prioriza la estabilidad rítmica para mantener un bombeo de sangre constante
 
 
 
