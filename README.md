@@ -210,7 +210,7 @@ Después del filtrado, la señal se dividió en dos segmentos de 2 minutos y se 
 <img width="400" height="800" alt="image" src="Im4.png" />
 
 ### Pre-procesamiento de la señal
-##Selección de parámetros del filtro IIR
+## Selección de parámetros del filtro IIR
 
 Se diseñó un filtro pasa-altos IIR para eliminar el ruido de baja frecuencia presente en la señal ECG, especialmente la deriva de línea base causada por respiración y movimiento de electrodos.
 
