@@ -233,6 +233,9 @@ Se escogió porque corresponde al punto típico de corte de filtros Butterworth,
 Frecuencia de muestreo
 fs=2500 Hz
 Corresponde a la frecuencia con la que fue adquirida la señal ECG y permite representar correctamente la actividad cardíaca y detectar los picos R con buena resolución temporal.
+<img width="400" height="800" alt="image" src="Im5.png" />
+<img width="400" height="800" alt="image" src="Im6.png" />
+<img width="400" height="800" alt="image" src="Im7.png" />
 ### Análisis de la HRV en el dominio del tiempo 
 
 
