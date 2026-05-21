@@ -213,34 +213,46 @@ Se realiza el diagrama de Poincaré a partir de la definición de una función `
 Posteriormente, se realiza la visualización gráfica donde cada punto corresponde a un par de intervalos consecutivos. Además, se agrega una línea diagonal como referencia, indicando la condición ideal en la que todos los intervalos R-R serían iguales. Finalmente, la función es aplicada a ambos segmentos de la señal ECG para comparar el comportamiento de la variabilidad cardíaca en cada condición experimental.
 
 ```python 
-x1_rr1 = rr1[:-1]
-x2_rr1 = rr1[1:]
+def poincare_plot(rr, titulo):
+    rr_n = rr[:-1]  # RR(n)
+    rr_n1 = rr[1:] # RR(n+1)
 
-plt.figure(figsize=(7,7))
+    plt.figure(figsize=(6,6))
 
-plt.scatter(
-    x1_rr1,
-    x2_rr1,
-    color='deeppink',
-    s=30,
-    alpha=0.7
+    plt.scatter(
+        rr_n,
+        rr_n1,
+        s=20,
+        color='deeppink'
+    )
+    # Línea diagonal
+    minimo = min(rr_n.min(), rr_n1.min())
+    maximo = max(rr_n.max(), rr_n1.max())
+    plt.plot(
+        [minimo, maximo],
+        [minimo, maximo],
+        'k-',
+        linewidth=1
+    )
+
+    plt.xlabel('RR(n) [s]')
+    plt.ylabel('RR(n+1) [s]')
+
+    plt.title(titulo)
+
+    plt.grid(True)
+
+    plt.axis('equal')
+
+    plt.show()
+poincare_plot(
+    rr1,
+    "Poincaré - Reposo (0-2 min)"
 )
-
-plt.plot(
-    [min(x1_rr1), max(x1_rr1)],
-    [min(x1_rr1), max(x1_rr1)],
-    'k--'
+poincare_plot(
+    rr2,
+    "Poincaré - Lectura (2-4 min)"
 )
-
-plt.title('Diagrama de Poincaré - Reposo')
-
-plt.xlabel('RR(n) [s]')
-plt.ylabel('RR(n+1) [s]')
-
-plt.grid()
-plt.axis('equal')
-
-plt.show()
 ``` 
 
 <img width="875" height="818" alt="image" src="https://github.com/user-attachments/assets/6f6dd882-c016-4da8-a256-d1a9ae9b6b19" />
