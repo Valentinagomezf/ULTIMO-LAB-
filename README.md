@@ -34,10 +34,16 @@ Análisis convencional: Históricamente se han usado métodos como la desviació
 
 #### Diagrama de Poincaré como herramienta de análisis de la serie R-R
 
-El Diagrama de Poincaré o Poincaré Plot en inglés es una herramienta no lineal ampliamente utilizada para analizar la serie de intervalos R-R y caracterizar la HRV. Su construcción es relativamente sencilla y requiere haber definido previamente la lista de los tiempos (en ms) en los que se detectaron los R-R:
+El diagrama de Poincaré, también llamado Lorenz Plot, es una técnica de análisis no lineal que grafica cada intervalo R-R (Ik) contra el intervalo siguiente (Ik+1).
 
+![](https://github.com/Valentinagomezf/ULTIMO-LAB-/blob/main/poincare1.png?raw=true)
 
-
+Interpretación Fisiológica del Gráfico
+Las dimensiones y la dispersión geométrica del gráfico permiten interpretar el estado del Sistema Nervioso Autónomo (SNA):
+- Puntos muy dispersos: Alta variabilidad global (HRV); indica una buena modulación autonómica y salud cardíaca.
+- 
+-
+-
 
 
 
