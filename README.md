@@ -205,3 +205,8 @@ En esta etapa se construyeron los diagramas de Poincaré a partir de los interva
 
 Finalmente, se calcularon los índices CSI y CVI con el fin de evaluar la actividad simpática y parasimpática del sistema nervioso autónomo, comparando los cambios fisiológicos presentes en cada segmento de la señal.
 ### DIAGRAMA 
+##
+<img width="858" height="832" alt="image" src="https://github.com/user-attachments/assets/a7215bc4-ebc9-4074-a789-0c61cf664a69" />
+
+##
+
