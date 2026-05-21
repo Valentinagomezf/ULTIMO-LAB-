@@ -39,7 +39,8 @@ El diagrama de Poincaré, también llamado Lorenz Plot, es una técnica de anál
 ![POINCARE](https://github.com/Valentinagomezf/ULTIMO-LAB-/blob/main/poincare1.png?raw=true)
 
 
-Interpretación Fisiológica del Gráfico
+Interpretación Fisiológica del Gráfico:
+
 Las dimensiones y la dispersión geométrica del gráfico permiten interpretar el estado del Sistema Nervioso Autónomo (SNA):
 - Puntos muy dispersos: Alta variabilidad global (HRV); indica una buena modulación autonómica y salud cardíaca.
 - SD1 alto (Ancho): Cambios rápidos entre latidos consecutivos. Está regulado por el sistema parasimpático (tono vagal).
