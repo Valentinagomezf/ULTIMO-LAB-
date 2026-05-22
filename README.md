@@ -271,11 +271,109 @@ con el fin de lograr una reducción suficiente del ruido de alta frecuencia sin 
 <img width="400" height="800" alt="image" src="Im8.png" />
 <img width="400" height="800" alt="image" src="Im9.png" />
 
-### Análisis de la HRV en el dominio del tiempo 
+### CODIGO PHYTON
+``
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from scipy import signal
+from scipy.signal import find_peaks
+from google.colab import drive
+``
+En esta sección se importan las librerías necesarias para el procesamiento de la señal ECG.
+NumPy se utiliza para operaciones matemáticas y manejo de arreglos numéricos.
+Pandas permite leer y organizar el archivo CSV que contiene la señal ECG.
+Matplotlib se emplea para generar las gráficas de la señal y de los resultados obtenidos.
+SciPy contiene herramientas para procesamiento digital de señales, especialmente para implementar los filtros IIR y detectar los picos R.
+Finalmente, se utiliza Google Drive para acceder al archivo almacenado en la nube.
 
+``
+drive.mount('/content/drive')
+``
+Esta instrucción permite conectar Google Colab con Google Drive para acceder al archivo que contiene la señal ECG adquirida durante el laboratorio.
+``
+ruta = '/content/drive/MyDrive/ECG.csv'
+datos = pd.read_csv(ruta, sep=';')
+``
+Se define la ruta donde se encuentra almacenado el archivo ECG.csv y posteriormente se carga utilizando la función read_csv() de Pandas.
+El parámetro sep=';' indica que las columnas del archivo están separadas por punto y coma.
 
+``
+tiempo = datos.iloc[:,0].values
+ecg = datos.iloc[:,2].values
+``
+Se extraen las columnas necesarias del archivo:
+La primera columna corresponde al tiempo.
+La tercera columna contiene la señal ECG filtrada utilizada para el análisis.
+Los datos son convertidos en arreglos numéricos para facilitar el procesamiento digital.
+``
+fs = 2500
+``
+Se define la frecuencia de muestreo de la señal ECG:
+fs=2500 Hz
+Esto significa que la señal fue adquirida con 2500 muestras por segundo.
 
-  
+``
+b_hp = [0.998744, -0.998744]
+a_hp = [1, -0.997489]
+``
+En esta sección se definen los coeficientes del filtro IIR pasa-altos.
+
+Este filtro tiene como objetivo eliminar componentes de muy baja frecuencia, principalmente el desplazamiento de línea base producido por movimiento, respiración o variaciones lentas durante la adquisición.
+
+Los coeficientes:
+
+b_hp corresponden al numerador del filtro.
+a_hp corresponden al denominador del filtro.
+
+Estos valores fueron obtenidos mediante el diseño digital del filtro Butterworth.
+
+``
+y[n] = 0.998744x[n]
+     - 0.998744x[n-1]
+     + 0.997489y[n-1]
+``
+La ecuación en diferencias representa matemáticamente el comportamiento del filtro digital.
+
+Cada muestra de salida y[n] depende de:la muestra actual de entrada,muestras anteriores de entrada y muestras anteriores de salida.
+
+Esto caracteriza a los filtros IIR
+
+``
+ecg_hp = signal.lfilter(b_hp, a_hp, ecg)
+``
+Se aplica el filtro pasa-altos a la señal ECG mediante la función lfilter() de SciPy.
+Como resultado se obtiene una nueva señal llamada ecg_hp, donde se reducen las componentes de baja frecuencia y el desplazamiento de línea base.
+``
+b_lp =  3.44e-3,1.032e-2,1.032e-2,3.44e-3
+a_lp = 3.304,-7.118,4.718,-0.876
+``
+
+En esta sección se definen los coeficientes del filtro IIR pasa-bajos.
+Este filtro permite eliminar ruido de alta frecuencia presente en la señal ECG, como:
+ruido muscular,interferencias electrónicas,perturbaciones del sistema de adquisición.
+``
+y[n] = 0.00344x[n]
+     + 0.01032x[n-1]
+     + 0.01032x[n-2]
+     + 0.00344x[n-3]
+     - 3.304y[n-1]
+     + 7.118y[n-2]
+     - 4.718y[n-3]
+     + 0.876y[n-4]
+``
+Esta ecuación describe el funcionamiento del filtro pasa-bajos.
+Cada muestra filtrada depende tanto de entradas anteriores como de salidas anteriores, permitiendo suavizar la señal y reducir componentes de alta frecuencia.
+``
+ecg_filtrado = signal.lfilter(b_lp, a_lp, ecg_hp)
+``
+Se aplica el filtro pasa-bajos a la señal previamente procesada por el filtro pasa-altos.
+La señal resultante ecg_filtrado corresponde a la señal ECG final utilizada para el análisis HRV.
+``
+plt.plot(tiempo, ecg_filtrado)
+``
+Se grafica la señal ECG después del proceso de filtrado digital para visualizar la mejora en la relación señal-ruido y observar claramente los complejos QRS.
+
 ## PARTE C 
 En esta etapa se construyeron los diagramas de Poincaré a partir de los intervalos R-R obtenidos de la señal ECG, permitiendo analizar la dispersión y el comportamiento dinámico de la frecuencia cardíaca durante las condiciones de reposo y lectura en voz alta. Además, se implementó la elipse de dispersión para calcular los parámetros SD1 y SD2 asociados a la variabilidad cardíaca.
 
