@@ -586,9 +586,74 @@ Se realizaron dos tipos de diagramas de Poincaré para analizar la variabilidad 
 ### Programación con Elipse 
 ara esta parte de la programación se utiliza nuevamente la definición de la función para el diagrama de Poincaré, pero agregando la representación de la elipse asociada a los parámetros SD1 y SD2. Inicialmente, se toman los intervalos R-R consecutivos para formar los arreglos x1 y x2, los cuales permiten construir la nube de puntos del diagrama. Posteriormente, se calculan los valores de SD1 y SD2 a partir de la desviación estándar de la diferencia y suma entre los intervalos consecutivos normalizados por $\sqrt{2}$.
 Después del cálculo de estos parámetros, se genera una elipse rotada 45° utilizando una matriz de rotación, permitiendo que esta quede alineada con la línea de identidad del diagrama de Poincaré. Finalmente, la elipse es centrada sobre la media de los datos para representar gráficamente la dispersión transversal y longitudinal de los intervalos R-R, facilitando el análisis de la variabilidad cardíaca y la actividad autonómica en cada segmento de la señal ECG.
+```python
+def poincare(rr, titulo, color):
+
+    x1 = rr[:-1]
+    x2 = rr[1:]
+
+    # SD1 y SD2
+    sd1 = np.std((x2 - x1) / np.sqrt(2))
+    sd2 = np.std((x2 + x1) / np.sqrt(2))
+
+    # CSI y CVI
+    csi = sd2 / sd1
+    cvi = np.log10(sd1 * sd2)
+
+    # Elipse
+    theta = np.linspace(0, 2*np.pi, 200)
+
+    ellipse_x = sd2 * np.cos(theta)
+    ellipse_y = sd1 * np.sin(theta)
+
+    # Matriz de rotación 45°
+    rotacion = np.array([
+        [np.cos(np.pi/4), -np.sin(np.pi/4)],
+        [np.sin(np.pi/4),  np.cos(np.pi/4)]
+    ])
+
+    ellipse = rotacion @ np.vstack((ellipse_x, ellipse_y))
+
+    # Centro de la elipse
+    media_x = np.mean(x1)
+    media_y = np.mean(x2)
+
+    # Gráfica
+    plt.figure(figsize=(7,7))
+
+    plt.scatter(
+        x1,
+        x2,
+        color=color,
+        s=30,
+        alpha=0.7
+    )
+
+    plt.plot(
+        ellipse[0] + media_x,
+        ellipse[1] + media_y,
+        color='black',
+        linewidth=2
+    )
+
+    plt.xlabel('RR(n) [s]')
+    plt.ylabel('RR(n+1) [s]')
+
+    plt.title(titulo)
+
+    plt.grid()
+    plt.axis('equal')
+
+    plt.show()
+
+    return sd1, sd2, csi, cvi
+```
+### Gráficas 
+Se realiza el diagrama de Poincaré con la representación de la elipse asociada a los parámetros SD1 y SD2. Esta representación permite cuantificar la variabilidad cardíaca a corto y largo plazo, respectivamente, convirtiéndose en una medida fisiológica que facilita el análisis de la actividad simpática y parasimpática del sistema nervioso autónomo durante las condiciones de reposo y lectura en voz alta.
 
 <img width="858" height="832" alt="image" src="https://github.com/user-attachments/assets/a7215bc4-ebc9-4074-a789-0c61cf664a69" />
 <img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" />
+### 
 <img width="1161" height="683" alt="image" src="https://github.com/user-attachments/assets/a316404d-28fd-4767-9d12-9e4a66b30a6d" />
 
 ##
