@@ -290,13 +290,13 @@ scipy.signal contiene funciones para procesamiento digital de señales.
 find_peaks permite detectar automáticamente los picos R.
 drive conecta Google Colab con Google Drive.
 ```
-2. Conexión con Google Drive
+### 2. Conexión con Google Drive
 ```
 drive.mount('/content/drive')
 ```
 Explicación:Esta instrucción conecta Google Colab con Google Drive para acceder al archivo ECG almacenado en la nube.
 
-3. Carga del archivo ECG
+### 3. Carga del archivo ECG
 
 ```
 ruta = '/content/drive/MyDrive/ECG.csv'
@@ -308,13 +308,11 @@ Explicación:Se define la ruta del archivo ECG y luego se carga utilizando:
 ```
 pd.read_csv()
 
-El parámetro:
-
-sep=';'
+El parámetro:sep=';'
 ```
 indica que las columnas del archivo están separadas por punto y coma.
 
-4. Extracción de columnas
+### 4. Extracción de columnas
 
 ```
 tiempo = datos.iloc[:,0].values
@@ -327,70 +325,52 @@ Primera columna → tiempo.
 Tercera columna → señal ECG.
 
 La función:
+iloc[:,0] ------ selecciona todas las filas de la primera columna.
+La función:.values-------convierte los datos en arreglos numéricos.
 
-iloc[:,0]
-
-selecciona todas las filas de la primera columna.
-
-La función:.values
-
-convierte los datos en arreglos numéricos.
-
-5. Frecuencia de muestreo
+### 5. Frecuencia de muestreo
 ```
 fs = 2500
-Explicación
 ```
+Explicación:
 La frecuencia de muestreo corresponde al número de muestras tomadas por segundo durante la adquisición del ECG.
-
 fs=2500 Hz
-
 Esto significa que en 1 segundo existen 2500 muestras de la señal.
 
-6. Definición del filtro pasa-altos IIR
+### 6. Definición del filtro pasa-altos IIR
 ```
 b_hp = [0.998744, -0.998744]
 a_hp = [1, -0.997489]
 ```
 Explicación:Aquí se definen los coeficientes del filtro pasa-altos IIR.
-
 b_hp → coeficientes del numerador.
 a_hp → coeficientes del denominador.
-
 Este filtro elimina componentes de baja frecuencia como:
 desplazamiento de línea base,movimiento del paciente,respiración.
 
-7. Ecuación en diferencias del filtro pasa-altos
+### 7. Ecuación en diferencias del filtro pasa-altos
 ```
 y[n] = 0.998744x[n]
      - 0.998744x[n-1]
      + 0.997489y[n-1]
 ```
 Explicación:La ecuación en diferencias representa matemáticamente el funcionamiento del filtro digital.
-
-Cada salida:
-y[n]
-
+Cada salida:y[n]
 depende de:
 la entrada actual,entradas anteriores,salidas anteriores.
 Esto caracteriza a los filtros IIR, ya que utilizan retroalimentación.
 
-8. Aplicación del filtro pasa-altos
+### 8. Aplicación del filtro pasa-altos
 ```
 ecg_hp = signal.lfilter(b_hp, a_hp, ecg)
 ```
-Explicación
-La función:
-signal.lfilter()
-aplica el filtro digital a la señal ECG.
+Explicación:
+La función:signal.lfilter()----- Aplica el filtro digital a la señal ECG.
 Internamente ejecuta la ecuación en diferencias muestra por muestra.
 
-La salida:
-ecg_hp
-corresponde a la señal ECG filtrada por el pasa-altos.
+La salida:ecg_hp-----corresponde a la señal ECG filtrada por el pasa-altos.
 
-9. Definición del filtro pasa-bajos IIR
-
+### 9. Definición del filtro pasa-bajos IIR
  ```   
 b_lp = [
     3.44e-3,
@@ -407,12 +387,9 @@ a_lp = [
 ]
 ```
 Explicación:Estos coeficientes corresponden al filtro pasa-bajos IIR Butterworth de tercer orden.
+Este filtro elimina:ruido muscular,interferencia electrónica,componentes de alta frecuencia.
 
-Este filtro elimina:
-ruido muscular,interferencia electrónica,componentes de alta frecuencia.
-
-10. Ecuación en diferencias del filtro pasa-bajos
-
+### 10. Ecuación en diferencias del filtro pasa-bajos
  ```   
 y[n] = 0.00344x[n]
      + 0.01032x[n-1]
@@ -427,88 +404,54 @@ Explicación:La ecuación calcula cada nueva salida utilizando:
 muestras actuales de entrada,muestras anteriores de entrada,salidas anteriores.
 Esto permite suavizar la señal ECG y eliminar ruido de alta frecuencia.
 
-11. Aplicación del filtro pasa-bajos
+### 11. Aplicación del filtro pasa-bajos
 ```
 ecg_filtrado = signal.lfilter(b_lp, a_lp, ecg_hp)
 ```
 Explicación:Aquí se aplica el filtro pasa-bajos sobre la señal previamente filtrada por el pasa-altos.
-La señal final:
-ecg_filtrado
-corresponde a la señal ECG utilizada para el análisis HRV.
+La señal final:ecg_filtrado-----corresponde a la señal ECG utilizada para el análisis HRV.
 
-12. División de la señal en segmentos
-
-   ```
+### 12. División de la señal en segmentos
+ ```
 duracion_segmento = 120
-
 muestras_segmento = duracion_segmento * fs
 ```
 Explicación:La práctica solicita dividir la señal en segmentos de:
-
-2 minutos=120 segundos
-
-Como la señal está digitalizada, el tiempo debe convertirse a muestras:
-
+2 minutos=120 segundos-----Como la señal está digitalizada, el tiempo debe convertirse a muestras:
 120×2500=300000
 
 Por lo tanto:
-
 muestras_segmento = 300000
 
-13. División de segmentos ECG
-
+### 13. División de segmentos ECG
 ```
 segmento1 = ecg_filtrado[:muestras_segmento]
-
 segmento2 = ecg_filtrado[muestras_segmento:2*muestras_segmento]
 ```
-
 Explicación:
 Python utiliza slicing:
-
 vector[inicio:fin]
-
 Entonces:
-
 [:muestras_segmento]
-
-selecciona:
-
-desde la muestra 0
-hasta la muestra 300000.
-
-Mientras que:
-
-[muestras_segmento:2*muestras_segmento]
-
-selecciona:
-
-desde la muestra 300000
-hasta la muestra 600000.
-
+selecciona:desde la muestra 0 hasta la muestra 300000.
+Mientras que:[muestras_segmento:2*muestras_segmento]
+selecciona:desde la muestra 300000hasta la muestra 600000.
 Esto corresponde a:
-
 Segmento 1 → reposo.
 Segmento 2 → lectura.
 
-14. Distancia mínima entre picos R
+### 14. Distancia mínima entre picos R
 ```
 distancia = int(0.5 * fs)
 ```
 Explicación:Aquí se calcula la distancia mínima permitida entre dos picos consecutivos.
-
 0.5×2500=1250
-
 Esto significa que entre dos picos R deben existir al menos:
-
 1250 muestras
-
 Esto evita detectar:
-
 ruido,onda T,múltiples máximos del mismo complejo QRS.
 
-15. Detección de picos R
-
+### 15. Detección de picos R
 ```
 peaks1, _ = find_peaks(
     segmento1,
@@ -517,93 +460,61 @@ peaks1, _ = find_peaks(
 )
 ```
 Explicación
-La función:
-
-find_peaks()
-
-detecta máximos locales en la señal.
-
+La función:find_peaks(),detecta máximos locales en la señal.
 En el ECG, esos máximos corresponden a los picos R del complejo QRS.
-
 El algoritmo analiza muestra por muestra:
+compara amplitudes vecinas,detecta máximos,y verifica que cumplan ciertas condiciones.
 
-compara amplitudes vecinas,
-detecta máximos,
-y verifica que cumplan ciertas condiciones.
-
-16. Parámetro prominence
+### 16. Parámetro prominence
 ```
 prominence=2*np.std(segmento1)
 ```
-Explicación
-
-La función:
-
-np.std()
-
-calcula la desviación estándar de la señal.
-
+Explicación:
+La función:np.std()-----calcula la desviación estándar de la señal.
 Luego se multiplica por 2 para generar un umbral dinámico.
-
 Solo se detectan picos que sobresalen significativamente respecto al ruido.
-
 Esto permite identificar únicamente complejos QRS reales.
 
-17. Cálculo de intervalos RR
+### 17. Cálculo de intervalos RR
 ```
 rr1 = np.diff(peaks1) / fs
 ```
-Explicación
-
-La función:
-
-np.diff()
-
-resta elementos consecutivos.
-
+Explicación:
+La función:np.diff()-----resta elementos consecutivos.
 Ejemplo:
-
 [3400-1200, 5600-3400]
-
 Esto calcula cuántas muestras existen entre dos picos R consecutivos.
-
 Como el resultado está en muestras:
-
 RR=Δmuestras/fs
 ​Entonces:
 convierte los intervalos RR a segundos.
 El intervalo RR representa el tiempo entre dos latidos consecutivos.
 
-18. Media RR
-
+### 18. Media RR
 ```
 media_rr1 = np.mean(rr1)
 ```
-Explicación
-La función:
-np.mean()
-calcula el promedio de los intervalos RR.
+Explicación:La función np.mean() calcula el promedio de los intervalos RR.
 RR=1/N∑RRi
-	
 La media RR representa el tiempo promedio entre latidos.
 RR grande → menor frecuencia cardíaca.
 RR pequeño → mayor frecuencia cardíaca.
 
-19. SDNN
+### 19. SDNN
 ```
 sdnn1 = np.std(rr1)
 ```
-Explicación
+Explicación:
 La SDNN corresponde a la desviación estándar de los intervalos RR.
 La SDNN mide la variabilidad cardíaca.
 SDNN alta → mayor variabilidad.
 SDNN baja → menor variabilidad.
-20. Frecuencia cardíaca
+
+### 20. Frecuencia cardíaca
 ```
 fc1 = 60 / rr1
 ```
-Explicación:La frecuencia cardíaca se calcula mediante:
-FC=60/RR
+Explicación:La frecuencia cardíaca se calcula mediante:FC=60/RR
 Como RR está en segundos, dividir 60 entre RR permite obtener:
 Latidos por minuto (lpm)
 
