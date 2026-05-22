@@ -519,7 +519,7 @@ Como RR está en segundos, dividir 60 entre RR permite obtener:
 Latidos por minuto (lpm)
 
 ## GRAFICAS ANALISIS
-<img width="400" height="800" alt="image" src="Im10.png" />
+<img width="700" height="1100" alt="image" src="Im10.png" />
 <img width="400" height="800" alt="image" src="Im11.png" />
 <img width="400" height="800" alt="image" src="Im12.png" />
 <img width="400" height="800" alt="image" src="Im13.png" />
