@@ -659,6 +659,7 @@ Se realiza el diagrama de Poincaré con la representación de la elipse asociada
 <img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" /><br>
 ### Cálculos índices de actividad vagal (CVI) y de actividad simpática (CSI)
 Despues de obtener las variabilidades a corto y largo plazo mediante los parámetros SD1 y SD2, junto con los diagramas de Poincaré, se calculan los índices de actividad vagal (CVI) y actividad simpática (CSI). Estos índices permiten estimar el comportamiento del sistema nervioso autónomo y analizar cómo este regula la actividad cardíaca durante las diferentes condiciones experimentales.
+
 ```python 
 def csi_cvi_from_rr(rr):
 
@@ -693,20 +694,19 @@ Después calculamos SD2, que mide los cambios generales o de largo plazo de la s
 Despues de calcular SD1 y SD2 se calcularon los índices autonómicos:
 - CSI, obtenido como la relación SD2/SD1, para estimar la actividad simpática.
 - CVI, calculado como el logaritmo del producto SD1·SD2, para estimar la actividad vagal o parasimpática.
-## Resultados
+- 
+### Resultados
 Segmento 1:
-SD1: 0.0915 s
-SD2: 0.0911 s
-CSI: 0.9959
-CVI: -2.0792
+SD1: 0.0915 s, SD2: 0.0911 s
+CSI: 0.9959, CVI: -2.0792
 Segmento 2:
-SD1: 0.1617 s
-SD2: 0.1770 s
-CSI: 1.0945
-CVI: -1.5433
+SD1: 0.1617 s, SD2: 0.1770 s
+CSI: 1.0945, CVI: -1.5433
+
+### Gráfica 
 <img width="1161" height="683" alt="image" src="https://github.com/user-attachments/assets/a316404d-28fd-4767-9d12-9e4a66b30a6d" />
 
-##
+## Análisis 
 
 
 
