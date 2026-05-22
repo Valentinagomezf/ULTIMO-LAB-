@@ -696,12 +696,12 @@ Despues de calcular SD1 y SD2 se calcularon los índices autonómicos:
 - CVI, calculado como el logaritmo del producto SD1·SD2, para estimar la actividad vagal o parasimpática.
 - 
 ### Resultados
-Segmento 1:
-SD1: 0.0915 s, SD2: 0.0911 s
-CSI: 0.9959, CVI: -2.0792
-Segmento 2:
-SD1: 0.1617 s, SD2: 0.1770 s
-CSI: 1.0945, CVI: -1.5433
+Segmento 1<br>
+SD1= 0.0915s, SD2= 0.091s<br>
+CSI= 0.9959, CVI= -2.0792<br>
+Segmento 2<br>
+SD1= 0.1617s, SD2= 0.1770s<br>
+CSI= 1.0945, CVI= -1.5433<br>
 
 ### Gráfica 
 <img width="1161" height="683" alt="image" src="https://github.com/user-attachments/assets/a316404d-28fd-4767-9d12-9e4a66b30a6d" />
