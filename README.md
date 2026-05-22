@@ -582,7 +582,9 @@ Se realizaron dos tipos de diagramas de Poincaré para analizar la variabilidad 
 ### Poincare sin Elipse
 <img width="875" height="818" alt="image" src="https://github.com/user-attachments/assets/6f6dd882-c016-4da8-a256-d1a9ae9b6b19" />
 <img width="848" height="830" alt="image" src="https://github.com/user-attachments/assets/45cce40a-09e8-431f-85b7-f86fb547733b" />
-## Programación con Elipse 
+
+### Programación con Elipse 
+
 
 <img width="858" height="832" alt="image" src="https://github.com/user-attachments/assets/a7215bc4-ebc9-4074-a789-0c61cf664a69" />
 <img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" />
