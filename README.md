@@ -265,7 +265,12 @@ debido a que este valor corresponde al punto de corte típico de un filtro Butte
 Por otra parte, la atenuación en banda de rechazo se seleccionó como:
 
 K2=−10 dB
+
 con el fin de lograr una reducción suficiente del ruido de alta frecuencia sin incrementar excesivamente el orden del filtro ni el costo computacional.
+
+<img width="400" height="800" alt="image" src="Im8.png" />
+<img width="400" height="800" alt="image" src="Im9.png" />
+
 ### Análisis de la HRV en el dominio del tiempo 
 
 
