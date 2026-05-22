@@ -271,100 +271,149 @@ con el fin de lograr una reducción suficiente del ruido de alta frecuencia sin 
 <img width="400" height="800" alt="image" src="Im8.png" />
 <img width="400" height="800" alt="image" src="Im9.png" />
 
-### CODIGO PHYTON
-``
+### 1. Importación de librerías
+```
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 from scipy import signal
 from scipy.signal import find_peaks
 from google.colab import drive
-``
-En esta sección se importan las librerías necesarias para el procesamiento de la señal ECG.
-NumPy se utiliza para operaciones matemáticas y manejo de arreglos numéricos.
-Pandas permite leer y organizar el archivo CSV que contiene la señal ECG.
-Matplotlib se emplea para generar las gráficas de la señal y de los resultados obtenidos.
-SciPy contiene herramientas para procesamiento digital de señales, especialmente para implementar los filtros IIR y detectar los picos R.
-Finalmente, se utiliza Google Drive para acceder al archivo almacenado en la nube.
+```
+Explicación:En esta sección se importan las librerías necesarias para realizar el procesamiento digital de la señal ECG.
 
-``
+```
+numpy permite realizar operaciones matemáticas y trabajar con arreglos.
+pandas permite leer archivos CSV.
+matplotlib.pyplot permite generar gráficas.
+scipy.signal contiene funciones para procesamiento digital de señales.
+find_peaks permite detectar automáticamente los picos R.
+drive conecta Google Colab con Google Drive.
+```
+2. Conexión con Google Drive
+```
 drive.mount('/content/drive')
-``
+```
+Explicación:Esta instrucción conecta Google Colab con Google Drive para acceder al archivo ECG almacenado en la nube.
 
-Esta instrucción permite conectar Google Colab con Google Drive para acceder al archivo que contiene la señal ECG adquirida durante el laboratorio.
+3. Carga del archivo ECG
 
-``
+```
 ruta = '/content/drive/MyDrive/ECG.csv'
+
 datos = pd.read_csv(ruta, sep=';')
-``
+```
 
-Se define la ruta donde se encuentra almacenado el archivo ECG.csv y posteriormente se carga utilizando la función read_csv() de Pandas.
-El parámetro sep=';' indica que las columnas del archivo están separadas por punto y coma.
+Explicación:Se define la ruta del archivo ECG y luego se carga utilizando:
+```
+pd.read_csv()
 
+El parámetro:
 
-``
+sep=';'
+```
+indica que las columnas del archivo están separadas por punto y coma.
+
+4. Extracción de columnas
+
+```
 tiempo = datos.iloc[:,0].values
 ecg = datos.iloc[:,2].values
-``
+```
 
-Se extraen las columnas necesarias del archivo:
-La primera columna corresponde al tiempo.
-La tercera columna contiene la señal ECG filtrada utilizada para el análisis.
-Los datos son convertidos en arreglos numéricos para facilitar el procesamiento digital.
+Explicación:Se extraen las columnas necesarias:
 
-``
+Primera columna → tiempo.
+Tercera columna → señal ECG.
+
+La función:
+
+iloc[:,0]
+
+selecciona todas las filas de la primera columna.
+
+La función:.values
+
+convierte los datos en arreglos numéricos.
+
+5. Frecuencia de muestreo
+```
 fs = 2500
-``
+Explicación
+```
+La frecuencia de muestreo corresponde al número de muestras tomadas por segundo durante la adquisición del ECG.
 
-Se define la frecuencia de muestreo de la señal ECG:
 fs=2500 Hz
-Esto significa que la señal fue adquirida con 2500 muestras por segundo.
 
-``
+Esto significa que en 1 segundo existen 2500 muestras de la señal.
+
+6. Definición del filtro pasa-altos IIR
+```
 b_hp = [0.998744, -0.998744]
 a_hp = [1, -0.997489]
-``
+```
+Explicación:Aquí se definen los coeficientes del filtro pasa-altos IIR.
 
-En esta sección se definen los coeficientes del filtro IIR pasa-altos.
+b_hp → coeficientes del numerador.
+a_hp → coeficientes del denominador.
 
-Este filtro tiene como objetivo eliminar componentes de muy baja frecuencia, principalmente el desplazamiento de línea base producido por movimiento, respiración o variaciones lentas durante la adquisición.
+Este filtro elimina componentes de baja frecuencia como:
+desplazamiento de línea base,movimiento del paciente,respiración.
 
-Los coeficientes:
-
-b_hp corresponden al numerador del filtro.
-a_hp corresponden al denominador del filtro.
-
-Estos valores fueron obtenidos mediante el diseño digital del filtro Butterworth.
-
-``
+7. Ecuación en diferencias del filtro pasa-altos
+```
 y[n] = 0.998744x[n]
      - 0.998744x[n-1]
      + 0.997489y[n-1]
-``
+```
+Explicación:La ecuación en diferencias representa matemáticamente el funcionamiento del filtro digital.
 
-La ecuación en diferencias representa matemáticamente el comportamiento del filtro digital.
+Cada salida:
+y[n]
 
-Cada muestra de salida y[n] depende de:la muestra actual de entrada,muestras anteriores de entrada y muestras anteriores de salida.
+depende de:
+la entrada actual,entradas anteriores,salidas anteriores.
+Esto caracteriza a los filtros IIR, ya que utilizan retroalimentación.
 
-Esto caracteriza a los filtros IIR
-
-``
+8. Aplicación del filtro pasa-altos
+```
 ecg_hp = signal.lfilter(b_hp, a_hp, ecg)
-``
+```
+Explicación
+La función:
+signal.lfilter()
+aplica el filtro digital a la señal ECG.
+Internamente ejecuta la ecuación en diferencias muestra por muestra.
 
-Se aplica el filtro pasa-altos a la señal ECG mediante la función lfilter() de SciPy.
-Como resultado se obtiene una nueva señal llamada ecg_hp, donde se reducen las componentes de baja frecuencia y el desplazamiento de línea base.
+La salida:
+ecg_hp
+corresponde a la señal ECG filtrada por el pasa-altos.
 
-``
-b_lp =  3.44e-3,1.032e-2,1.032e-2,3.44e-3
-a_lp = 3.304,-7.118,4.718,-0.876
-``
+9. Definición del filtro pasa-bajos IIR
 
-En esta sección se definen los coeficientes del filtro IIR pasa-bajos.
-Este filtro permite eliminar ruido de alta frecuencia presente en la señal ECG, como:
-ruido muscular,interferencias electrónicas,perturbaciones del sistema de adquisición.
+ ```   
+b_lp = [
+    3.44e-3,
+    1.032e-2,
+    1.032e-2,
+    3.44e-3
+]
 
-``
+a_lp = [
+    3.304,
+    -7.118,
+    4.718,
+    -0.876
+]
+```
+Explicación:Estos coeficientes corresponden al filtro pasa-bajos IIR Butterworth de tercer orden.
+
+Este filtro elimina:
+ruido muscular,interferencia electrónica,componentes de alta frecuencia.
+
+10. Ecuación en diferencias del filtro pasa-bajos
+
+ ```   
 y[n] = 0.00344x[n]
      + 0.01032x[n-1]
      + 0.01032x[n-2]
@@ -373,79 +422,191 @@ y[n] = 0.00344x[n]
      + 7.118y[n-2]
      - 4.718y[n-3]
      + 0.876y[n-4]
-``
+```
+Explicación:La ecuación calcula cada nueva salida utilizando:
+muestras actuales de entrada,muestras anteriores de entrada,salidas anteriores.
+Esto permite suavizar la señal ECG y eliminar ruido de alta frecuencia.
 
-Esta ecuación describe el funcionamiento del filtro pasa-bajos.
-Cada muestra filtrada depende tanto de entradas anteriores como de salidas anteriores, permitiendo suavizar la señal y reducir componentes de alta frecuencia.
-
-``
+11. Aplicación del filtro pasa-bajos
+```
 ecg_filtrado = signal.lfilter(b_lp, a_lp, ecg_hp)
-``
+```
+Explicación:Aquí se aplica el filtro pasa-bajos sobre la señal previamente filtrada por el pasa-altos.
+La señal final:
+ecg_filtrado
+corresponde a la señal ECG utilizada para el análisis HRV.
 
-Se aplica el filtro pasa-bajos a la señal previamente procesada por el filtro pasa-altos.
-La señal resultante ecg_filtrado corresponde a la señal ECG final utilizada para el análisis HRV.
+12. División de la señal en segmentos
 
-``
-plt.plot(tiempo, ecg_filtrado)
-``
+   ```
+duracion_segmento = 120
 
-Se grafica la señal ECG después del proceso de filtrado digital para visualizar la mejora en la relación señal-ruido y observar claramente los complejos QRS.
+muestras_segmento = duracion_segmento * fs
+```
+Explicación:La práctica solicita dividir la señal en segmentos de:
 
-``
+2 minutos=120 segundos
+
+Como la señal está digitalizada, el tiempo debe convertirse a muestras:
+
+120×2500=300000
+
+Por lo tanto:
+
+muestras_segmento = 300000
+
+13. División de segmentos ECG
+
+```
 segmento1 = ecg_filtrado[:muestras_segmento]
+
 segmento2 = ecg_filtrado[muestras_segmento:2*muestras_segmento]
-``
+```
 
-La señal ECG filtrada se divide en dos segmentos de 2 minutos cada uno:
+Explicación:
+Python utiliza slicing:
 
-Segmento 1: condición de reposo.
-Segmento 2: condición de lectura o actividad.
-Esto permite comparar posteriormente la variabilidad cardíaca entre ambas condiciones.
+vector[inicio:fin]
 
-``
+Entonces:
+
+[:muestras_segmento]
+
+selecciona:
+
+desde la muestra 0
+hasta la muestra 300000.
+
+Mientras que:
+
+[muestras_segmento:2*muestras_segmento]
+
+selecciona:
+
+desde la muestra 300000
+hasta la muestra 600000.
+
+Esto corresponde a:
+
+Segmento 1 → reposo.
+Segmento 2 → lectura.
+
+14. Distancia mínima entre picos R
+```
+distancia = int(0.5 * fs)
+```
+Explicación:Aquí se calcula la distancia mínima permitida entre dos picos consecutivos.
+
+0.5×2500=1250
+
+Esto significa que entre dos picos R deben existir al menos:
+
+1250 muestras
+
+Esto evita detectar:
+
+ruido,onda T,múltiples máximos del mismo complejo QRS.
+
+15. Detección de picos R
+
+```
 peaks1, _ = find_peaks(
     segmento1,
     distance=distancia,
     prominence=2*np.std(segmento1)
 )
-``
+```
+Explicación
+La función:
 
-La detección de picos R se realiza mediante la función find_peaks().
-Los parámetros utilizados permiten identificar únicamente los complejos QRS más representativos:
-distance evita detectar múltiples picos dentro del mismo latido.
-prominence selecciona únicamente picos con amplitud suficientemente alta.
+find_peaks()
 
-``
+detecta máximos locales en la señal.
+
+En el ECG, esos máximos corresponden a los picos R del complejo QRS.
+
+El algoritmo analiza muestra por muestra:
+
+compara amplitudes vecinas,
+detecta máximos,
+y verifica que cumplan ciertas condiciones.
+
+16. Parámetro prominence
+```
+prominence=2*np.std(segmento1)
+```
+Explicación
+
+La función:
+
+np.std()
+
+calcula la desviación estándar de la señal.
+
+Luego se multiplica por 2 para generar un umbral dinámico.
+
+Solo se detectan picos que sobresalen significativamente respecto al ruido.
+
+Esto permite identificar únicamente complejos QRS reales.
+
+17. Cálculo de intervalos RR
+```
 rr1 = np.diff(peaks1) / fs
-``
+```
+Explicación
 
-Los intervalos RR se calculan obteniendo la diferencia entre posiciones consecutivas de los picos R detectados.
-Posteriormente se divide entre la frecuencia de muestreo para convertir el resultado a segundos.
-Los intervalos RR representan el tiempo entre dos latidos consecutivos.
+La función:
 
-``
+np.diff()
+
+resta elementos consecutivos.
+
+Ejemplo:
+
+[3400-1200, 5600-3400]
+
+Esto calcula cuántas muestras existen entre dos picos R consecutivos.
+
+Como el resultado está en muestras:
+
+RR=Δmuestras/fs
+​Entonces:
+convierte los intervalos RR a segundos.
+El intervalo RR representa el tiempo entre dos latidos consecutivos.
+
+18. Media RR
+
+```
 media_rr1 = np.mean(rr1)
+```
+Explicación
+La función:
+np.mean()
+calcula el promedio de los intervalos RR.
+RR=1/N∑RRi
+	
+La media RR representa el tiempo promedio entre latidos.
+RR grande → menor frecuencia cardíaca.
+RR pequeño → mayor frecuencia cardíaca.
+
+19. SDNN
+```
 sdnn1 = np.std(rr1)
-``
-
-Se calculan parámetros básicos de la variabilidad de la frecuencia cardíaca (HRV):
-Media RR: promedio del tiempo entre latidos.
-SDNN: desviación estándar de los intervalos RR.
-La SDNN es uno de los indicadores más utilizados para evaluar la variabilidad cardíaca y el balance autonómico.
-
-``
+```
+Explicación
+La SDNN corresponde a la desviación estándar de los intervalos RR.
+La SDNN mide la variabilidad cardíaca.
+SDNN alta → mayor variabilidad.
+SDNN baja → menor variabilidad.
+20. Frecuencia cardíaca
+```
 fc1 = 60 / rr1
-``
+```
+Explicación:La frecuencia cardíaca se calcula mediante:
+FC=60/RR
+Como RR está en segundos, dividir 60 entre RR permite obtener:
+Latidos por minuto (lpm)
 
-La frecuencia cardíaca se calcula a partir de los intervalos RR 
-
-``
-plt.bar()
-``
-
-Finalmente se generan gráficas comparativas entre:
-intervalos RR,frecuencia cardíaca,y parámetros HRV.
-Esto permite observar diferencias entre las condiciones de reposo y lectura, evaluando cambios en el comportamiento cardíaco del sujeto.
 
 ## PARTE C 
 En esta etapa se construyeron los diagramas de Poincaré a partir de los intervalos R-R obtenidos de la señal ECG, permitiendo analizar la dispersión y el comportamiento dinámico de la frecuencia cardíaca durante las condiciones de reposo y lectura en voz alta. Además, se implementó la elipse de dispersión para calcular los parámetros SD1 y SD2 asociados a la variabilidad cardíaca.
@@ -505,4 +666,12 @@ Se realizaron dos tipos de diagramas de Poincaré para analizar la variabilidad 
 <img width="1161" height="683" alt="image" src="https://github.com/user-attachments/assets/a316404d-28fd-4767-9d12-9e4a66b30a6d" />
 
 ##
+
+
+
+
+
+
+
+
 
