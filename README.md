@@ -576,12 +576,13 @@ poincare_plot( rr2, "Poincaré - Lectura (2-4 min)")
 ```
 ## Calculos SD1 y SD2
 Primero se calcula la diferencia y la suma entre los intervalos R-R consecutivos `rr_n1` y `rr_n`, normalizándolos por $\sqrt{2}$ con el fin de proyectar los datos sobre los ejes principales del diagrama de Poincaré. Posteriormente, se calcula la desviación estándar de cada una de estas componentes, obteniendo así los parámetros SD1 y SD2, los cuales permiten cuantificar la dispersión transversal y longitudinal de la nube de puntos, respectivamente.
-
+<img width="949" height="942" alt="WhatsApp Image 2026-05-21 at 9 29 19 PM" src="https://github.com/user-attachments/assets/adf8d659-cd93-48b3-b93d-1d9a638d81f8" />
 ## Graficas 
 Se realizaron dos tipos de diagramas de Poincaré para analizar la variabilidad de la frecuencia cardíaca. En los primeros diagramas, correspondientes únicamente a la nube de puntos, fue posible observar la dinámica de los intervalos R-R y su comportamiento entre latidos consecutivos. A partir de la distribución de los puntos se pudo identificar si la señal presentaba un comportamiento más estable, disperso o irregular. Además, la forma y dispersión de la nube permitieron visualizar el patrón general de la variabilidad cardíaca en cada segmento de la señal ECG, facilitando la comparación entre las condiciones de reposo y lectura en voz alta.
-### Poincare sin elipse
+### Poincare sin Elipse
 <img width="875" height="818" alt="image" src="https://github.com/user-attachments/assets/6f6dd882-c016-4da8-a256-d1a9ae9b6b19" />
 <img width="848" height="830" alt="image" src="https://github.com/user-attachments/assets/45cce40a-09e8-431f-85b7-f86fb547733b" />
+## Programación con Elipse 
 
 <img width="858" height="832" alt="image" src="https://github.com/user-attachments/assets/a7215bc4-ebc9-4074-a789-0c61cf664a69" />
 <img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" />
