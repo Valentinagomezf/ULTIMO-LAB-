@@ -535,7 +535,7 @@ Latidos por minuto (lpm)
 ## PARTE C 
 En esta etapa se construyeron los diagramas de Poincaré a partir de los intervalos R-R obtenidos de la señal ECG, permitiendo analizar la dispersión y el comportamiento dinámico de la frecuencia cardíaca durante las condiciones de reposo y lectura en voz alta. Además, se implementó la elipse de dispersión para calcular los parámetros SD1 y SD2 asociados a la variabilidad cardíaca.
 
-Finalmente, se calcularon los índices CSI y CVI con el fin de evaluar la actividad simpática y parasimpática del sistema nervioso autónomo, comparando los cambios fisiológicos presentes en cada segmento de la señal.
+Por ultimo, se calcularon los índices CSI y CVI con el fin de evaluar la actividad simpática y parasimpática del sistema nervioso autónomo, comparando los cambios fisiológicos presentes en cada segmento de la señal.
 ## Diagrama 
 <img width="800" height="1740" alt="Infografía de periódico moderno ordenado colorido (2)" src="https://github.com/user-attachments/assets/65b1a366-60e9-4cef-821b-fa3992481b44" />
 
