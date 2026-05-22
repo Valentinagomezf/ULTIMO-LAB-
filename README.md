@@ -650,10 +650,13 @@ def poincare(rr, titulo, color):
 ```
 ### Gráficas 
 Se realiza el diagrama de Poincaré con la representación de la elipse asociada a los parámetros SD1 y SD2. Esta representación permite cuantificar la variabilidad cardíaca a corto y largo plazo, respectivamente, convirtiéndose en una medida fisiológica que facilita el análisis de la actividad simpática y parasimpática del sistema nervioso autónomo durante las condiciones de reposo y lectura en voz alta.
+<img width="447" height="186" alt="image" src="https://github.com/user-attachments/assets/cb202987-a27e-4bda-8eec-304058856a71" />
+<img width="439" height="182" alt="image" src="https://github.com/user-attachments/assets/c2819dde-c8ed-426c-944c-8c3c9718ede9" />
 
 <img width="858" height="832" alt="image" src="https://github.com/user-attachments/assets/a7215bc4-ebc9-4074-a789-0c61cf664a69" />
 <img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" />
-### 
+### Cálculos índices de actividad vagal (CVI) y de actividad simpática (CSI)
+Despues de obtener las variabilidades a corto y largo plazo mediante los parámetros SD1 y SD2, junto con los diagramas de Poincaré, se calculan los índices de actividad vagal (CVI) y actividad simpática (CSI). Estos índices permiten estimar el comportamiento del sistema nervioso autónomo y analizar cómo este regula la actividad cardíaca durante las diferentes condiciones experimentales.
 <img width="1161" height="683" alt="image" src="https://github.com/user-attachments/assets/a316404d-28fd-4767-9d12-9e4a66b30a6d" />
 
 ##
