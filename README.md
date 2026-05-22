@@ -656,9 +656,54 @@ Se realiza el diagrama de Poincaré con la representación de la elipse asociada
 <img width="439" height="182" alt="image" src="https://github.com/user-attachments/assets/c2819dde-c8ed-426c-944c-8c3c9718ede9" />
 
 <img width="858" height="832" alt="image" src="https://github.com/user-attachments/assets/a7215bc4-ebc9-4074-a789-0c61cf664a69" />
-<img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" />
+<img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" /><br>
 ### Cálculos índices de actividad vagal (CVI) y de actividad simpática (CSI)
 Despues de obtener las variabilidades a corto y largo plazo mediante los parámetros SD1 y SD2, junto con los diagramas de Poincaré, se calculan los índices de actividad vagal (CVI) y actividad simpática (CSI). Estos índices permiten estimar el comportamiento del sistema nervioso autónomo y analizar cómo este regula la actividad cardíaca durante las diferentes condiciones experimentales.
+```python 
+def csi_cvi_from_rr(rr):
+
+    SD1, SD2 = sd1_sd2_from_rr(rr)
+
+    # Actividad simpática
+    CSI = SD2 / SD1
+
+    # Actividad vagal
+    CVI = np.log10(SD1 * SD2)
+
+    return CSI, CVI, SD1, SD2
+CSI1, CVI1, SD1_1, SD2_1 = csi_cvi_from_rr(rr1) # SEGMENTO 1 - REPOSO
+CSI2, CVI2, SD1_2, SD2_2 = csi_cvi_from_rr(rr2) # SEGMENTO 2 - LECTURA
+
+# RESULTADOS
+
+print("SEGMENTO 1 - REPOSO")
+print(f"SD1 = {SD1_1:.4f} s")
+print(f"SD2 = {SD2_1:.4f} s")
+print(f"CSI = {CSI1:.3f}")
+print(f"CVI = {CVI1:.3f}\n")
+
+print("SEGMENTO 2 - LECTURA")
+print(f"SD1 = {SD1_2:.4f} s")
+print(f"SD2 = {SD2_2:.4f} s")
+print(f"CSI = {CSI2:.3f}")
+print(f"CVI = {CVI2:.3f}")
+```
+Primero calculamos SD1, que mide los cambios rápidos entre latidos consecutivos. Para esto, se calcula la diferencia entre cada intervalo R-R y el siguiente, y luego se obtiene la desviación estándar de esos valores. Este parámetro representa la variabilidad cardíaca a corto plazo.
+Después calculamos SD2, que mide los cambios generales o de largo plazo de la señal. En este caso, se suman los intervalos consecutivos y también se calcula su desviación estándar. Este parámetro representa la variabilidad global de la frecuencia cardíaca.
+Despues de calcular SD1 y SD2 se calcularon los índices autonómicos:
+- CSI, obtenido como la relación SD2/SD1, para estimar la actividad simpática.
+- CVI, calculado como el logaritmo del producto SD1·SD2, para estimar la actividad vagal o parasimpática.
+## Resultados
+Segmento 1:
+SD1: 0.0915 s
+SD2: 0.0911 s
+CSI: 0.9959
+CVI: -2.0792
+Segmento 2:
+SD1: 0.1617 s
+SD2: 0.1770 s
+CSI: 1.0945
+CVI: -1.5433
 <img width="1161" height="683" alt="image" src="https://github.com/user-attachments/assets/a316404d-28fd-4767-9d12-9e4a66b30a6d" />
 
 ##
