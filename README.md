@@ -240,6 +240,32 @@ Corresponde a la frecuencia con la que fue adquirida la señal ECG y permite rep
 <img width="400" height="800" alt="image" src="Im7.png" />
 
 
+Para el diseño del filtro IIR pasa-bajos se seleccionaron los parámetros 
+ω1=120
+ω2=200
+K1=−3 dB 
+K2=−10 dB
+Debido a las características espectrales de la señal ECG y a la necesidad de eliminar componentes de ruido de alta frecuencia sin alterar la información fisiológica importante.
+
+La señal ECG concentra la mayor parte de su contenido útil en bajas frecuencias, especialmente las ondas P, T y el complejo QRS. Por esta razón, se estableció una frecuencia de paso de:
+
+ω1=120
+con el objetivo de conservar adecuadamente las componentes cardíacas relevantes de la señal y evitar distorsiones en su morfología.
+
+Posteriormente, se seleccionó una frecuencia de rechazo de:
+ω2=200
+para comenzar a atenuar componentes de alta frecuencia asociadas principalmente al ruido muscular (EMG), interferencias electrónicas y perturbaciones del sistema de adquisición.
+
+La atenuación en banda de paso se fijó en:
+
+K1=−3 dB
+
+debido a que este valor corresponde al punto de corte típico de un filtro Butterworth, permitiendo conservar la amplitud de la señal ECG sin pérdidas significativas.
+
+Por otra parte, la atenuación en banda de rechazo se seleccionó como:
+
+K2=−10 dB
+con el fin de lograr una reducción suficiente del ruido de alta frecuencia sin incrementar excesivamente el orden del filtro ni el costo computacional.
 ### Análisis de la HRV en el dominio del tiempo 
 
 
