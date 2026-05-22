@@ -519,18 +519,18 @@ Como RR está en segundos, dividir 60 entre RR permite obtener:
 Latidos por minuto (lpm)
 
 ## GRAFICAS ANALISIS
-<img width="700" height="1100" alt="image" src="Im10.png" />
-<img width="400" height="800" alt="image" src="Im11.png" />
-<img width="400" height="800" alt="image" src="Im12.png" />
-<img width="400" height="800" alt="image" src="Im13.png" />
-<img width="400" height="800" alt="image" src="Im14.png" />
-<img width="400" height="800" alt="image" src="Im15.png" />
-<img width="400" height="800" alt="image" src="Im16.png" />
-<img width="400" height="800" alt="image" src="Im17.png" />
-<img width="400" height="800" alt="image" src="Im18.png" />
-<img width="400" height="800" alt="image" src="Im19.png" />
-<img width="400" height="800" alt="image" src="Im20.png" />
-<img width="400" height="800" alt="image" src="Im21.png" />
+<img width="800" height="1200" alt="image" src="Im10.png" />
+<img width="800" height="1200" alt="image" src="Im11.png" />
+<img width="800" height="1200" alt="image" src="Im12.png" />
+<img width="800" height="1200" alt="image" src="Im13.png" />
+<img width="800" height="1200" alt="image" src="Im14.png" />
+<img width="800" height="1200" alt="image" src="Im15.png" />
+<img width="800" height="1200" alt="image" src="Im16.png" />
+<img width="800" height="1200" alt="image" src="Im17.png" />
+<img width="800" height="1200" alt="image" src="Im18.png" />
+<img width="800" height="1200" alt="image" src="Im19.png" />
+<img width="800" height="1200" alt="image" src="Im20.png" />
+<img width="800" height="1200" alt="image" src="Im21.png" />
 
 ## PARTE C 
 En esta etapa se construyeron los diagramas de Poincaré a partir de los intervalos R-R obtenidos de la señal ECG, permitiendo analizar la dispersión y el comportamiento dinámico de la frecuencia cardíaca durante las condiciones de reposo y lectura en voz alta. Además, se implementó la elipse de dispersión para calcular los parámetros SD1 y SD2 asociados a la variabilidad cardíaca.
