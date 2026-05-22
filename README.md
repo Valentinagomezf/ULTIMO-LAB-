@@ -538,11 +538,9 @@ En esta etapa se construyeron los diagramas de Poincaré a partir de los interva
 Finalmente, se calcularon los índices CSI y CVI con el fin de evaluar la actividad simpática y parasimpática del sistema nervioso autónomo, comparando los cambios fisiológicos presentes en cada segmento de la señal.
 ### DIAGRAMA 
 ## PROGRAMACIÓN 
-Sí, está bien explicado y técnicamente correcto, pero tiene algunos detalles de redacción y precisión que puedes mejorar para que suene más profesional en el informe. Te recomiendo dejarlo así:
+Se realiza el diagrama de Poincaré a partir de una función llamada poincare_plot, la cual recibe como entrada la serie de intervalos R-R. Dentro de la función se crean dos arreglos: `rr_n`, que contiene todos los intervalos R-R excepto el último, y `rr_n1`, que contiene todos los intervalos excepto el primero. De esta manera, cada punto formado por `rr_n` y `rr_n1` representa un intervalo cardíaco y el siguiente intervalo consecutivo.
 
-Se realiza el diagrama de Poincaré a partir de la definición de una función `poincare_plot`, la cual recibe como entrada la serie de intervalos R-R. Dentro de la función se crean dos arreglos: `rr_n`, que contiene todos los intervalos R-R excepto el último, y `rr_n1`, que contiene todos los intervalos excepto el primero. De esta manera, cada punto `rr_n`, `rr_n1` representa un intervalo cardíaco y su intervalo consecutivo.
-
-Posteriormente, se realiza la visualización gráfica donde cada punto corresponde a un par de intervalos consecutivos. Además, se agrega una línea diagonal como referencia, indicando la condición ideal en la que todos los intervalos R-R serían iguales. Finalmente, la función es aplicada a ambos segmentos de la señal ECG para comparar el comportamiento de la variabilidad cardíaca en cada condición experimental.
+Luego se realiza la gráfica del diagrama, donde cada punto permite visualizar el comportamiento de los intervalos R-R entre latidos consecutivos. También se agrega una línea diagonal como referencia, indicando el caso ideal en el que todos los intervalos serían iguales. Finalmente, la función se aplica a los dos segmentos de la señal ECG para comparar el comportamiento de la variabilidad cardíaca en cada condición experimental.
 
 ```python 
 def poincare_plot(rr, titulo):
@@ -577,7 +575,7 @@ poincare_plot( rr1, "Poincaré - Reposo (0-2 min)")
 poincare_plot( rr2, "Poincaré - Lectura (2-4 min)")
 ```
 ## Calculos SD1 y SD2
-Primero se calcula la diferencia y la suma entre los intervalos R-R consecutivos `rr_n1` y `rr_n`, normalizándolos por `` con el fin de proyectar los datos sobre los ejes principales del diagrama de Poincaré. Posteriormente, se calcula la desviación estándar de cada una de estas componentes, obteniendo así los parámetros SD1 y SD2, los cuales permiten cuantificar la dispersión transversal y longitudinal de la nube de puntos, respectivamente.
+Primero se calcula la diferencia y la suma entre los intervalos R-R consecutivos `rr_n1` y `rr_n`, normalizándolos por $\sqrt{2}$ con el fin de proyectar los datos sobre los ejes principales del diagrama de Poincaré. Posteriormente, se calcula la desviación estándar de cada una de estas componentes, obteniendo así los parámetros SD1 y SD2, los cuales permiten cuantificar la dispersión transversal y longitudinal de la nube de puntos, respectivamente.
 
 ## Graficas 
 Se realizaron dos tipos de diagramas de Poincaré para analizar la variabilidad de la frecuencia cardíaca. En los primeros diagramas, correspondientes únicamente a la nube de puntos, fue posible observar la dinámica de los intervalos R-R y su comportamiento entre latidos consecutivos. A partir de la distribución de los puntos se pudo identificar si la señal presentaba un comportamiento más estable, disperso o irregular. Además, la forma y dispersión de la nube permitieron visualizar el patrón general de la variabilidad cardíaca en cada segmento de la señal ECG, facilitando la comparación entre las condiciones de reposo y lectura en voz alta.
