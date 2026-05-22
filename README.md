@@ -584,7 +584,8 @@ Se realizaron dos tipos de diagramas de Poincaré para analizar la variabilidad 
 <img width="848" height="830" alt="image" src="https://github.com/user-attachments/assets/45cce40a-09e8-431f-85b7-f86fb547733b" />
 
 ### Programación con Elipse 
-
+ara esta parte de la programación se utiliza nuevamente la definición de la función para el diagrama de Poincaré, pero agregando la representación de la elipse asociada a los parámetros SD1 y SD2. Inicialmente, se toman los intervalos R-R consecutivos para formar los arreglos x1 y x2, los cuales permiten construir la nube de puntos del diagrama. Posteriormente, se calculan los valores de SD1 y SD2 a partir de la desviación estándar de la diferencia y suma entre los intervalos consecutivos normalizados por $\sqrt{2}$.
+Después del cálculo de estos parámetros, se genera una elipse rotada 45° utilizando una matriz de rotación, permitiendo que esta quede alineada con la línea de identidad del diagrama de Poincaré. Finalmente, la elipse es centrada sobre la media de los datos para representar gráficamente la dispersión transversal y longitudinal de los intervalos R-R, facilitando el análisis de la variabilidad cardíaca y la actividad autonómica en cada segmento de la señal ECG.
 
 <img width="858" height="832" alt="image" src="https://github.com/user-attachments/assets/a7215bc4-ebc9-4074-a789-0c61cf664a69" />
 <img width="849" height="807" alt="image" src="https://github.com/user-attachments/assets/44e5f5c7-b420-4f44-b104-7c31473df9a5" />
